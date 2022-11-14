@@ -1,24 +1,33 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+
 import './App.css';
 
 function App() {
+const[counter, myFunction] = useState(0)
+
+  const handleIncrease = () => {
+    myFunction(counter+1)
+  }
+
+  const handleDecrease = () => {
+    myFunction(counter > 0 ? counter-1 : 0)
+
+ }
+
+  function handleReset () {
+    myFunction(0)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <h3>{counter}</h3>
+
+      <div className='buttonGroup'>
+        <button onClick={handleIncrease}>+</button>
+        <button onClick={handleDecrease}>-</button>
+        <button onClick={handleReset}>Reset</button>
+    </div>  
+      </div>
   );
 }
 
