@@ -1,14 +1,21 @@
 import "./App.css";
 import { quotes } from "./quotes";
+import {useState} from "react"
 
  function Quote() {
-    console.log(quotes)
+    const [index, setIndex] = useState(0)
+
+    const handleRandomQuote = () => {
+      const randomIndex = Math.random()*quotes.length
+      setIndex(Math.floor(randomIndex))
+    }
 
    return (
      <div className='App'>
         <h1>Quotes</h1>
-        <p>Click button to get quote</p>
-        <button>Generate a Quote</button>
+        <h4>{quotes[index].txt}</h4>
+        <span>{quotes[index].author}</span>
+        <button onClick={handleRandomQuote}>Generate a Quote</button>
     </div>
    )
  }
